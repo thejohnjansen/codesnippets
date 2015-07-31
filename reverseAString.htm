@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function reverseAString() {
+	
+	var start = "string";
+	var answer = new Array();
+	var temp = "";
+	
+	for (var i = 0, j = start.length - 1; i < j; i++, j--){
+		temp = start[j];
+		answer[j] = start[i];
+		answer[i] = temp;		
+	}
+		
+	alert(a + " correct if it says 'string' backwards.");
+
+}
+
+document.addEventListener("load",reverseAString(), false);
+</script>
+</head>
+<body>
+
+</body>
+</html>

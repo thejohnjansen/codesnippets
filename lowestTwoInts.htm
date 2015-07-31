@@ -4,7 +4,23 @@
 <script>
 function lowestTwoInts() {
 	
-	var list = [4,3,10,0,11,100];
+	var list = [4,5,0,-1] ;
+	
+	if (list == undefined){
+		alert("Null, it was undefined.");
+		return;
+	}
+	
+	if (list.length < 2) {
+		alert("invalid, there were less than 2 items.");
+		return;
+	}
+	
+	if (list.length == 2) {
+		alert(list + " for 2 items only");
+		return;
+	}
+	
 	var answer = [Number.MAX_VALUE, Number.MAX_VALUE]; 
 	
 	for (var i = 0; i < list.length; i++){
@@ -19,7 +35,7 @@ function lowestTwoInts() {
 		}
 	}
 	
-	alert(answer + " correct if it says: 0,3.");
+	alert(answer + " for more than 2 items.");
 
 }
 
