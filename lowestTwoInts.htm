@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function lowestTwoInts() {
+	
+	var list = [4,3,10,11,100];
+	var answer = [list[0], list[1]]; 
+	
+	for (var i = 0; i < list.length; i++){
+		if (list[i] < answer[1]){			
+			if (list[i] < answer[0]){
+				answer[1] = answer[0];
+				answer[0] = list[i];
+			}
+			else {
+				answer[1] = list[i];
+			}
+		}
+	}
+	
+	if (answer[1] < answer[0]){
+		var temp = answer[0];
+		answer[0] = answer[1];
+		answer[1] = temp;
+	}
+	
+	alert(answer);
+
+}
+
+</script>
+<script>
+document.addEventListener("load",lowestTwoInts(), false);
+</script>
+</head>
+<body>
+
+</body>
+</html>
