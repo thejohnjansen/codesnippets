@@ -4,8 +4,8 @@
 <script>
 function lowestTwoInts() {
 	
-	var list = [4,3,10,11,100];
-	var answer = [list[0], list[1]]; 
+	var list = [4,3,10,0,11,100];
+	var answer = [Number.MAX_VALUE, Number.MAX_VALUE]; 
 	
 	for (var i = 0; i < list.length; i++){
 		if (list[i] < answer[1]){			
@@ -19,13 +19,7 @@ function lowestTwoInts() {
 		}
 	}
 	
-	if (answer[1] < answer[0]){
-		var temp = answer[0];
-		answer[0] = answer[1];
-		answer[1] = temp;
-	}
-	
-	alert(answer);
+	alert(answer + " correct if it says: 0,3.");
 
 }
 
