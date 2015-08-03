@@ -5,16 +5,13 @@
 function reverseAString() {
 	
 	var start = "string";
-	var answer = new Array();
 	var temp = "";
 	
-	for (var i = 0, j = start.length - 1; i < j; i++, j--){
-		temp = start[j];
-		answer[j] = start[i];
-		answer[i] = temp;		
+	for (var i = start.length - 1; i > -1; i--){
+		temp += start[i];		
 	}
-		
-	alert(a + " correct if it says 'string' backwards.");
+	
+	alert(temp + " correct if it says 'string' backwards.");
 
 }
 
