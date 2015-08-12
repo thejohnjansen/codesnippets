@@ -11,25 +11,25 @@
 				top:100px;
 			}
 			.col1 {
-				left: 100px;
+				left: 400px;
 			}
 			.row2 {
 				top:150px;
 			}
 			.col2 {
-				left: 150px;
+				left: 450px;
 			}
 			.row3 {
 				top:200px;
 			}
 			.col3 {
-				left: 200px;
+				left: 500px;
 			}
 			.row4 {
 				top:250px;
 			}
 			.col4 {
-				left:250px;
+				left:550px;
 			}
 
 		</style>
@@ -56,6 +56,62 @@
 		<div class="row4 col2" style="background:silver;"></div>
 		<div class="row4 col3" style="background:teal;"></div>
 		<div class="row4 col4" style="background:yellow;"></div>
+
+			<pre>
+// view source for the javascript
+// here is the C#
+
+using System;
+
+namespace RotateArray
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[,] matrix = { 
+                { "1", "2", "3", "4" }, 
+                { "5", "6", "7", "8" }, 
+                { "9", "10", "11", "12" },
+                { "13", "14", "15", "16" }
+            };
+
+            int arraySize = Convert.ToInt32(Math.Sqrt(matrix.Length));
+
+            string[,] answer = new string[arraySize, arraySize];
+
+            for (int i = 0; i < arraySize; i++)
+            {
+                for (int j = 0; j < arraySize; j++)
+                {
+                    answer[j, (arraySize - 1) - i] = matrix[i, j];
+                }
+            }
+
+            PrintArray(matrix, arraySize);
+            PrintArray(answer, arraySize);
+
+            Console.ReadLine();
+        }
+        public static void PrintArray(string[,] array, int arraySize)
+        {
+            for (int i = 0; i < arraySize; i++)
+            {
+                for (int j = 0; j < arraySize; j++)
+                {
+                    Console.Write(array[i, j].ToString());
+                    if (j < arraySize - 1)
+                        Console.Write("\t");
+                    else
+                        Console.Write("\n");
+                }
+            }
+            Console.Write("\n");
+        }
+    }
+}
+
+</pre>
 			
 	<script>
 		function rotate(){
