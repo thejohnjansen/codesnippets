@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+	<head>
+		<style>
+			.row1 {
+				top:100px;
+			}
+			.col1 {
+				left: 100px;
+			}
+			.row2 {
+				top:150px;
+			}
+			.col2 {
+				left: 150px;
+			}
+			.row3 {
+				top:200px;
+			}
+			.col3 {
+				left: 200px;
+			}
+			.row4 {
+				top:250px;
+			}
+			.col4 {
+				left:250px;
+			}
+
+		</style>
+	</head>
+	<body>
+		<p>This could be done via CSS, but it is actually just a simple way to visualize an interview question I've asked:</p>
+		<p style="padding-left:10px">Given a 2dimensional array, rotate it 90 degrees</p>
+				
+		<button onclick="rotate()">Rotate</button>
+
+		<div class="row1 col1" style="background:aqua;width: 50px;height:50px;position: absolute;"></div>
+		<div class="row1 col2" style="background:black;width: 50px;height:50px;position: absolute;"></div>
+		<div class="row1 col3" style="background:blue;width: 50px;height:50px;position: absolute;"></div>
+		<div class="row1 col4" style="background:fuchsia;width: 50px;height:50px;position: absolute;"></div>
+		<div class="row2 col1" style="background:gray;width: 50px;height:50px;position: absolute;"></div>
+		<div class="row2 col2" style="background:green;width: 50px;height:50px;position: absolute;"></div>
+		<div class="row2 col3" style="background:lime;width: 50px;height:50px;position: absolute;"></div>
+		<div class="row2 col4" style="background:maroon;width: 50px;height:50px;position: absolute;"></div>
+		<div class="row3 col1" style="background:navy;width: 50px;height:50px;position: absolute;"></div>
+		<div class="row3 col2" style="background:olive;width: 50px;height:50px;position: absolute;"></div>
+		<div class="row3 col3" style="background:orange;width: 50px;height:50px;position: absolute;"></div>
+		<div class="row3 col4" style="background:purple;width: 50px;height:50px;position: absolute;"></div>
+		<div class="row4 col1" style="background:red;width: 50px;height:50px;position: absolute;"></div>
+		<div class="row4 col2" style="background:silver;width: 50px;height:50px;position: absolute;"></div>
+		<div class="row4 col3" style="background:teal;width: 50px;height:50px;position: absolute;"></div>
+		<div class="row4 col4" style="background:yellow;width: 50px;height:50px;position: absolute;"></div>
+			
+	<script>
+		function rotate(){
+			// need the count of divs for both the for loops and the solution size
+			var count = document.getElementsByTagName("DIV").length;
+			
+			// we will go through the for loops based on the size of the square
+			var limit = Math.sqrt(count);
+			limit++;
+			
+			// create an array to store the elements as we find them
+			// this was interesting because doing it inplace meant we'd have more than one element selected sometimes
+			var elems = new Array(count);
+			
+			// keep track of where we are in the array 
+			var k = 0;
+			
+			// first time through, create an array of the elements
+			for (var i = 1; i < limit; i++) {
+				for (var j = 1; j < limit; j++) {
+					elems[k] = document.getElementsByClassName("row" + i + " col" + j)[0];
+					k++;
+				}
+			}
+			
+			// reset k
+			k = 0; 
+			
+			// go through the array and modify each member's class
+			for (var i = 1; i < limit; i++) {
+				for (var j = 1; j < limit; j++) {
+					elems[k].setAttribute("class", "row" + j + " col" + (limit-i));
+					k++;
+				}
+			}
+		}
+		
+	</script>
+	</body>	
+</html>
