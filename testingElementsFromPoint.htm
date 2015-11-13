@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+	<head></head>
+	<body>
+		<p id="opacity0_result" style="z-index:9999">This one has opacity:0. Onclick will work.</p>
+		<button id="opacity0" style="opacity:0" onclick="alert('opacity');">Opacity</button>
+		<p id="visibilityhidden_result" style="z-index:9999">This one has visibility:hidden. ElementsFromPoint will see it (in EDGE, that's a bug), but cannot be clicked.</p>
+		<button id="visibilityhidden" style="visibility:hidden;" onclick="alert('visibility');">Visibility</button>
+		<p id="displaynone_result" style="z-index:9999">This one has display:none. ElementsFromPoint will not see it, and it cannot be clicked.</p>
+		<button id="displaynone" style="display:none;" onclick="alert('display');">Hidden</button>
+		<p id="display_result" style="z-index:9999">This one is not hidden by any means. ElementsFromPoint will see it, and it cannot be clicked.</p>
+		<button id="display" style="" onclick="alert('display');">Visible</button>
+		
+		<div style="opacity:1; position:absolute; top: 1px; left: 1px; width:500px; height:500px; background:green; z-index:0">Test Div</div>
+		<script>
+			var d = document;
+			function tests(elemid){
+			var esfp; 
+			var elemToGet = elemid + "_result";
+			
+			var cr = document.getElementById(elemid).getBoundingClientRect();
+			if (document.msElementsFromPoint){
+					esfp = d.msElementsFromPoint(cr.left + 10, cr.top + 10);
+				}
+			else {
+					esfp = d.elementsFromPoint(cr.left + 10, cr.top + 10);
+				}
+
+		
+			var result = document.getElementById(elemToGet).innerText;
+			for (var i = 0; i < esfp.length; i++){
+					
+					result += esfp[i];
+					if (i < esfp.length -1){
+						result += ", ";
+					}
+				}
+			document.getElementById(elemToGet).innerText = result;
+			}
+			
+			function runtests() {
+			var foo = document.getElementsByTagName("button");
+			for (var i = 0; i < foo.length; i++) {
+					tests(foo[i].getAttribute("id"));
+				}
+			}
+		</script>
+		<script>runtests();</script>
+	</body>
+</html>
