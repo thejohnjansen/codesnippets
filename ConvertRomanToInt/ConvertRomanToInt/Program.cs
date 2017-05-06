@@ -6,9 +6,9 @@ namespace ConvertRomanToInt
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            foreach (var t in tests)
+            foreach (var t in TestCases)
             {
                 // the key will be the roman characters
                 string romanNumeral = t.Key.ToUpper();
@@ -70,10 +70,10 @@ namespace ConvertRomanToInt
                 {
                     // get the key of the next char in the string
                     var tkey = key + romanNumeral[i + 1].ToString();
-                    if (possibleValues.ContainsKey(tkey)) // you have a subtraction match
+                    if (PossibleValues.ContainsKey(tkey)) // you have a subtraction match
                     {
                         // add the subtracted value from the current value
-                        integerResult += possibleValues[tkey];
+                        integerResult += PossibleValues[tkey];
                         // since you subtracted, skip that char in the next loop
                         i++;
                         matchedTwo = true;
@@ -83,9 +83,9 @@ namespace ConvertRomanToInt
                 if (!matchedTwo) // didn't match two chars
                 {
                     // so if it's in the dictionary, add it
-                    if (possibleValues.ContainsKey(key))
+                    if (PossibleValues.ContainsKey(key))
                     {
-                        integerResult += possibleValues[key];
+                        integerResult += PossibleValues[key];
                     }
                 }
             }
@@ -114,21 +114,20 @@ namespace ConvertRomanToInt
             for (var i = 0; i < romanNumeral.Length - 1; i++)
             {
                 // there are no 0's in roman numerals, so safe default assignment
-                var firstValue = 0;
                 var secondValue = 0;
                 var thirdValue = 0;
 
                 // get the values of the roman characters
                 // there has to be a first value because length is not 0
-                firstValue = possibleValues[romanNumeral[i].ToString()];
+                var firstValue = PossibleValues[romanNumeral[i].ToString()];
 
                 if (i < romanNumeral.Length - 1) // there might be a value after the first
                 {
-                    secondValue = possibleValues[romanNumeral[i + 1].ToString()];
+                    secondValue = PossibleValues[romanNumeral[i + 1].ToString()];
 
                     if (i < romanNumeral.Length - 2) // there might be a value after the second
                     {
-                        thirdValue = possibleValues[romanNumeral[i + 2].ToString()];
+                        thirdValue = PossibleValues[romanNumeral[i + 2].ToString()];
                     }
                 }
 
@@ -160,7 +159,7 @@ namespace ConvertRomanToInt
                     }
                     if (secondValue == thirdValue && i < romanNumeral.Length - 3) // confirm there is a 4th value
                     {
-                        var fourthValue = possibleValues[romanNumeral[i + 3].ToString()];
+                        var fourthValue = PossibleValues[romanNumeral[i + 3].ToString()];
                         if (thirdValue == fourthValue) // cannot have 4 in a row
                         {
                             return false;
@@ -203,7 +202,7 @@ namespace ConvertRomanToInt
             {
                 string result = string.Empty;
 
-                foreach (var p in possibleValues)
+                foreach (var p in PossibleValues)
                 {
                     if (p.Key.Length == 1)
                     {
@@ -216,7 +215,7 @@ namespace ConvertRomanToInt
         /// <summary>
         /// A dictionary of all roman characters and subtractions we care about
         /// </summary>
-        private static Dictionary<string, int> possibleValues =
+        private static readonly Dictionary<string, int> PossibleValues =
             new Dictionary<string, int>
         {
                 { "M", 1000 },
@@ -236,7 +235,7 @@ namespace ConvertRomanToInt
         /// <summary>
         /// A dictionary of test cases
         /// </summary>
-        private static Dictionary<string, int> tests =
+        private static readonly Dictionary<string, int> TestCases =
             new Dictionary<string, int>
         {
                 { "IIII", 0 },
