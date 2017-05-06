@@ -178,7 +178,7 @@ namespace ConvertRomanToInt
                     {
                         return false;
                     }
-                    if ((IsAFive(firstValue)) && (firstValue == thirdValue)) // with 5's the cannot be equal either XIX is valid; VIV is not            
+                    if ((IsAFive(firstValue)) && (firstValue == thirdValue)) // XIX is valid; VIV is not            
                     {
                         return false;
                     }
