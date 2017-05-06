@@ -134,10 +134,6 @@ namespace ConvertRomanToInt
 
                 if (firstValue < secondValue) // subtraction case
                 {
-                    if ((IsAFive(secondValue)) && (thirdValue >= firstValue)) // XLI is valid, IVX is invalid
-                    {
-                        return false;
-                    }
                     if (IsAFive(firstValue)) // VI is valid, VX is invalid
                     {
                         return false;
