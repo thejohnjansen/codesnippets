@@ -138,7 +138,7 @@ namespace ConvertRomanToInt
                     {
                         return false;
                     }
-                    if ((IsAFive(firstValue)) && (secondValue > firstValue)) // VI is valid, VX is invalid
+                    if (IsAFive(firstValue)) // VI is valid, VX is invalid
                     {
                         return false;
                     }
