@@ -174,7 +174,7 @@ namespace ConvertRomanToInt
 
                 else if (firstValue > secondValue) // standard case
                 {
-                    if ((IsAFive(firstValue)) && (firstValue <= thirdValue)) // VI is valid, LIX is VIV is invalid            
+                    if ((IsAFive(firstValue)) && (firstValue <= thirdValue)) // VII and LIX are valid; LIL, LIC, and VIV are invalid            
                     {
                         return false;
                     }
